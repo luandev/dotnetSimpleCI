@@ -1,5 +1,5 @@
 export const config: IConfig = {
-    path: "./dir",
+    path: "/home/dotnet/alestorm",
     repo: "https://github.com/luandev/alestorm.git"
 };
 

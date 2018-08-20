@@ -3,6 +3,7 @@ import { exec } from 'child_process';
 import { GitWatcher, RepoResult, RepoWatchConfig } from 'git-repo-watch';
 import { config } from './config';
 
+exec(`mkdir ${config.path}`)
 exec(`git clone ${config.path} ${config.path}`);
 
 const gw = new GitWatcher();
@@ -35,14 +36,14 @@ gw.result$.subscribe((result: RepoResult) => {
 
 	try {
 		// tslint:disable-next-line:no-console
-		console.log(result);
+		console.log(result.changed);
 
 		if (result.error) {
 			gw.unwatch(result.config);
 		} else {
 			if (result.changed === true) {
-				// tslint:disable-next-line:no-console
-				console.log("result");
+				exec(`git clone ${config.path} ${config.path}`);
+				
 			}
 		}
 	}
