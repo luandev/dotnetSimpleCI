@@ -3,8 +3,8 @@
 Minimalistic script to clone, watch changes in a repository, sync and deploy!
 
 ## usage
-node ./build/main.js "path" "repository"
-
+change the config.ts with your variables
+node ./build/main.js
 
 ## Available scripts
 

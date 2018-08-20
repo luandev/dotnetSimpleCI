@@ -1,24 +1,24 @@
 // import * as git from 'git'
 import { exec } from 'child_process';
 import { GitWatcher, RepoResult, RepoWatchConfig } from 'git-repo-watch';
-// import { exec } from 'child_process';
+import { config } from './config';
 
-exec(`git clone ${process.argv[3]} ${process.argv[2]}`);
+exec(`git clone ${config.path} ${config.path}`);
 
 const gw = new GitWatcher();
 
 // tslint:disable-next-line:no-console
-console.log(process.argv[0]);
+console.log(config.path);
 
 // Use Sync Fork to check for changes in the upstream an update.
 gw.watch({
-	path: process.argv[2],
-	remote: process.argv[3],
+	path: config.path,
+	remote:  config.path,
 	branch: 'master',
 	poll: 5,
 	strict: true,
 	sync: {
-		remote: process.argv[3],
+		remote:  config.path,
 		branch: 'master',
 	}
 });
